@@ -1,0 +1,177 @@
+nav {
+    display: block;
+    position: relative;
+    top: 20px;
+    left: 0;
+}
+
+nav .brand img {
+    width: 200px;
+    height: 41px
+}
+
+nav .connect__btn {
+    float: right;
+    border: 0.1rem solid #15AC5B;
+    padding: 8px 0 8px 8px;
+    border-radius: 15px 0;
+    margin-top: -40px;
+    cursor: pointer;
+}
+
+
+nav .connect__btn img {
+    width: 25px;
+    margin-right: 10px;
+}
+
+nav .connect__btn button {
+    background: linear-gradient(90deg, #15AC5B 23.08%, #0F7B41 85.71%);
+    border: 1px solid #15AC5B;
+    color: #fff;
+    padding: 5px 10px;
+    width: 119px;
+
+}
+
+
+
+.landing__page {
+    margin-top: 20px;
+    border: 0.1rem solid #15AC5B;
+    border-radius: 20px;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.landing__content {
+    max-width: 600px;
+    margin: auto;
+}
+
+
+.landing__page h1 {
+    font-family: 'Hanson';
+    font-size: 85px;
+    font-weight: 700;
+    line-height: 88px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #C8FFAE;
+}
+
+.landing__page p {
+    font-family: 'General Sans';
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+
+}
+
+.cassino__grid h2 {
+    color: #7B7B7B;
+
+}
+
+.cassino__grid .grid__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    /* grid-template-rows: 2fr 1fr 1fr; */
+    grid-gap: 20px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 25px;
+
+}
+
+.cassino__grid .grid__container .zone {
+    cursor: pointer;
+    text-align: center;
+    font-size: 10em;
+    border-radius: 4px;
+    transition: all 0.3s linear;
+}
+
+.cassino__grid .grid__container img {
+    width: 364px;
+    height: 161px;
+    border-radius: 18px;
+}
+
+.cassino__grid .grid__container .orange {
+    background-color: orange;
+    padding: 40px;
+    border-radius: 18px;
+
+
+}
+
+.cassino__grid .grid__container .orange img {
+    width: 80px;
+    height: 80px;
+}
+
+.cassino__grid .grid__container .active{
+    background: linear-gradient(90deg, #1B5201 -0.09%, #287A01 53.29%, #1B5201 105.58%);
+    color: #fff;
+}
+
+.cassino__grid .grid__container button {
+    color: #fff;
+    background: #0C2500;
+}
+
+@media only screen and (max-width: 768px) {
+    nav .brand img {
+        width: 150px;
+        height: 31px
+    }
+
+    nav .connect__btn {
+
+        margin-top: -35px;
+    }
+
+    nav .connect__btn button {
+        background: linear-gradient(90deg, #15AC5B 23.08%, #0F7B41 85.71%);
+        border: 1px solid #15AC5B;
+        color: #fff;
+        padding: 5px;
+        width: 90px;
+
+    }
+
+    nav .connect__btn img {
+        width: 20px;
+        margin-right: 5px;
+    }
+
+
+    .landing__page {
+
+        border-radius: 20px;
+        padding: 20px 20px;
+
+    }
+
+
+    .landing__page h1 {
+        font-size: 35px;
+        text-align: center;
+        color: #C8FFAE;
+    }
+
+    .landing__page p {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 18px;
+        text-align: center;
+
+    }
+
+
+}
