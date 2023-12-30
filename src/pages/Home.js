@@ -8,8 +8,10 @@ import lotto from "../assets/images/casino/game-options/lotto.png";
 import rocket from "../assets/images/casino/game-options/rocket.png";
 import round from "../assets/images/casino/game-options/round.png";
 import seven from "../assets/images/casino/game-options/seven.png";
-import head from "../assets/images/casino/coinflip/heads/head.png";
-
+import head from "../assets/images/coinflip.png";
+import meta from "../assets/images/metamask.png"
+import dic from "../assets/images/dic.png"
+import pot from "../assets/images/pot.png"
 
 function Home() {
   return (
@@ -24,7 +26,7 @@ function Home() {
             <div className="connect__btn">
               <img src={brand_btn} alt="." />
 
-              <button>connect</button>
+              <Button className="button">connect</Button>
             </div>
           </nav>
         </div>
@@ -50,13 +52,14 @@ function Home() {
             <div className="grid__container">
               <div className="zone">
                 {" "}
-                <div className="orange">
+              
                   <img src={head} alt="." />
-                </div>
                 <div className="mt-2 active">
-                 {/* <Link> */}
-                 <Button fluid className="active">Play Now</Button>
-                 {/* </Link> */}
+                  {/* <Link> */}
+                  <Button fluid className="active">
+                    Play Now
+                  </Button>
+                  {/* </Link> */}
                 </div>
               </div>
 
@@ -64,21 +67,21 @@ function Home() {
                 {" "}
                 <img src={dice} alt="." />
                 <div className="mt-2">
-                  <Button fluid >Coming soon</Button>
+                  <Button fluid>Coming soon</Button>
                 </div>
               </div>
               <div className="zone">
                 {" "}
                 <img src={rocket} alt="." />
                 <div className="mt-2">
-                  <Button fluid >Coming soon</Button>
+                  <Button fluid>Coming soon</Button>
                 </div>
               </div>
               <div className="zone">
                 {" "}
                 <img src={round} alt="." />
                 <div className="mt-2">
-                  <Button fluid >Coming soon</Button>
+                  <Button fluid>Coming soon</Button>
                 </div>
               </div>
               {/* <div className="zone"> <img src={lotto} alt="." /> </div> */}
@@ -86,50 +89,58 @@ function Home() {
                 {" "}
                 <img src={seven} alt="." />
                 <div className="mt-2">
-                  <Button fluid >Coming soon</Button>
+                  <Button fluid>Coming soon</Button>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-
         <section className="py-5">
-            <div>
-
-                <div>
-                    <div>
-                        <h4>
-                            Total Wagered
-                        </h4>
-                        <h1>$200,000</h1>
-                    </div>
-                    <div>
-                    <h4>
-                            Total Bets
-                        </h4>
-                        <h1>40,000</h1>
-                        </div>
-                        <div><h4>
-                            Total Users
-                        </h4>
-                        <h1>10,000</h1>
-                        
-                        </div>
-                </div>
+          <div className="site__details">
+            <div className="site__contents">
+              <div>
+                <h4>Total Wagered</h4>
+                <h1>$200,000</h1>
+              </div>
+              <div>
+                <h4>Total Bets</h4>
+                <h1>40,000</h1>
+              </div>
+              <div>
+                <h4>Total Users</h4>
+                <h1>10,000</h1>
+              </div>
             </div>
-
+          </div>
         </section>
 
-        <section className="py-5">
-            <div>
-                <h2>How to play</h2>
-            </div>
+        <section className="py-3">
+          <div>
+            <h2>How to play</h2>
 
+            <div className="guide">
+              <div className="content">
+                <h3>Connect Wallet</h3>
+                <p>(make sure you select Taraxa network)</p>
+                <img src={meta} alt="." className="img-fluid meta-image"/>
+              </div>
+
+              <div className="content">
+                <h3>Select Game</h3>
+                <img src={dic} alt="." />
+              </div>
+
+              <div className="content">
+                <h3>Play & Win</h3>
+                <img src={pot} alt="." />
+              </div>
+            </div>
+          </div>
         </section>
 
-        <section className="text-center py-3">
-    <p>Copyright Taraxa Casino. All rights reserved</p>
+        <section className="text-center pt-5 pb-2">
+          <p>Copyright Taraxa Casino. All rights reserved</p>
         </section>
       </Container>
     </React.Fragment>
