@@ -1,0 +1,182 @@
+import React from "react";
+import "../assets/css/coinflip.css";
+import "../assets/css/styles.css";
+import { Container, Button, Form, Input, Label } from "semantic-ui-react";
+import brand from "../assets/images/casino/logo/brandlogo.png";
+import brand_btn from "../assets/images/casino/logo/buttonlogo.png";
+import coin from "../assets/images/casino/games-nav-icon/coinflip.png";
+import crash from "../assets/images/casino/games-nav-icon/crash.png";
+import dice from "../assets/images/casino/games-nav-icon/dice.png";
+import lotto from "../assets/images/casino/games-nav-icon/lotto.png";
+import raffle from "../assets/images/casino/games-nav-icon/raffle.png";
+import rout from "../assets/images/casino/games-nav-icon/rout.png";
+import slot from "../assets/images/casino/games-nav-icon/slot.png";
+import doc from "../assets/images/casino/protocol/doc.png";
+import git from "../assets/images/casino/protocol/git.png";
+import tg from "../assets/images/casino/protocol/tg.png";
+import token from "../assets/images/casino/protocol/token.png";
+import x from "../assets/images/casino/protocol/x.png";
+import head from "../assets/images/casino/coinflip/heads/head.png";
+import head_pick from "../assets/images/casino/coinflip/heads/pick.png";
+import tail from "../assets/images/casino/coinflip/tails/tail.png";
+import tail_pick from "../assets/images/casino/coinflip/tails/pick.png";
+
+
+
+function Coinflip() {
+  return (
+    <>
+      <div className="container">
+        <div>
+          <header>
+            <nav className="navbar">
+              <div>
+                <div className="brand__img">
+                  <img src={brand} alt="." />
+                </div>
+
+                <ul className="niv">
+                  <div className="list__design">
+                    <h3>GAMES</h3>
+                    <li>
+                      {" "}
+                      <a href="/dashboard" className="active">
+                        {" "}
+                        <img src={coin} alt="." /> Coinflip
+                      </a>{" "}
+                    </li>
+                    <li>
+                      <a href="/dashboard">
+                        <img src={dice} alt="." />
+                        Dice
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/dashboard">
+                        <img src={crash} alt="." />
+                        Crash
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/dashboard">
+                        <img src={rout} alt="." />
+                        Roullette
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/dashboard">
+                        <img src={slot} alt="." />
+                        Slot
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/dashboard">
+                        <img src={lotto} alt="." />
+                        Lotto
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/dashboard">
+                        <img src={raffle} alt="." />
+                        Raffle Draw
+                      </a>
+                    </li>
+                  </div>
+
+                  <div className="list__design">
+                    <h3>PROTOCOL</h3>
+                    <li>
+                      <a href="/dashboard">
+                        <img src={doc} alt="." />
+                        Docs
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/dashboard">
+                        <img src={token} alt="." />
+                        $TCASINO token
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/dashboard">
+                        <img src={x} alt="." />
+                        Twitter
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/dashboard">
+                        <img src={git} alt="." />
+                        Gitbook
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/dashboard">
+                        <img src={tg} alt="." />
+                        Telegram
+                      </a>
+                    </li>
+                  </div>
+                </ul>
+              </div>
+            </nav>
+          </header>
+        </div>
+
+        <main className="">
+          <p>How to play?</p>
+          <div className="wallet__connect">
+            <img src={brand_btn} alt="." />
+            <Button className="button">connect</Button>
+          </div>
+
+          <section className="py-5">
+            <div className="play__background">
+              <div className="play__content">
+
+
+                <div className="coin__image">
+                  <img src={head} alt="." />
+                  <h4>PICK A SIDE</h4>
+
+                  <div className="coin__options">
+                    <img src={head_pick} alt="."/>
+                    <img src={tail_pick} alt="."/>
+                  </div>
+                </div>
+
+                <div>
+                  <form>
+                    <label>
+                      Amount: <input type="number" required />
+                    </label>
+
+                    <div className="select__section">
+                      <div className="select__display">
+                        <span>500TARA</span>
+                        <span>1000TARA</span>
+                        <span>3500TARA</span>
+                        <span>700TARA</span>
+                        <span>10500TARA</span>
+                        <span>1700TARA</span>
+                      </div>
+                      <div className="mt-3">
+                        <Button fluid primary>
+                          DOUBLE OR NOTHING
+                        </Button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <p className="text-center mt-5">3% fees apply for every flip.</p>
+            </div>
+          </section>
+        </main>
+      </div>
+    </>
+  );
+}
+
+export default Coinflip;

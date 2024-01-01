@@ -7,6 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import GlobalStyle from './GlobalStyles';
 
 const Home = lazy(() => import("./pages/Home.js"));
+const Coinflip = lazy(() => import("./pages/Coinflip.js"));
+
 
 
 function App() {
@@ -22,7 +24,9 @@ function App() {
         }
       >
         <Routes>
-          <Route path="/" element={<Home />} />          
+          <Route path="/" element={<Home />} /> 
+          <Route path="/dashboard" element={<Coinflip />} />          
+
         </Routes>
       </Suspense>
     </Router>

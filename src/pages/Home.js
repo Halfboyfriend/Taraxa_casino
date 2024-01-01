@@ -12,6 +12,7 @@ import head from "../assets/images/coinflip.png";
 import meta from "../assets/images/metamask.png"
 import dic from "../assets/images/dic.png"
 import pot from "../assets/images/pot.png"
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -55,11 +56,11 @@ function Home() {
               
                   <img src={head} alt="." />
                 <div className="mt-2 active">
-                  {/* <Link> */}
+                  <Link to="/dashboard">
                   <Button fluid className="active">
                     Play Now
                   </Button>
-                  {/* </Link> */}
+                  </Link>
                 </div>
               </div>
 

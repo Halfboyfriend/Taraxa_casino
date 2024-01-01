@@ -10,7 +10,7 @@ nav .brand img {
     height: 41px
 }
 
-nav .connect__btn {
+ .connect__btn {
     float: right;
     border: 0.1rem solid #15AC5B;
     padding: 8px 0 8px 8px;
@@ -20,12 +20,12 @@ nav .connect__btn {
 }
 
 
-nav .connect__btn img {
+ .connect__btn img {
     width: 25px;
     margin-right: 10px;
 }
 
-nav .connect__btn .button {
+ .connect__btn .button {
     background: linear-gradient(90deg, #15AC5B 23.08%, #0F7B41 85.71%);
     border: 1px solid #15AC5B;
     color: #fff;
