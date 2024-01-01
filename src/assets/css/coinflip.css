@@ -119,6 +119,12 @@ main {
     float: right;
 }
 
+.play__background, .play__background form .btn{
+    background: linear-gradient(0deg, #00190E, #00190E),
+linear-gradient(0deg, #575757, #575757);
+
+}
+
 .play__background .play__content {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

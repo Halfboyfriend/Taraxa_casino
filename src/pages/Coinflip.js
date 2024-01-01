@@ -161,7 +161,7 @@ function Coinflip() {
                         <span>1700TARA</span>
                       </div>
                       <div className="mt-3">
-                        <Button fluid primary>
+                        <Button fluid primary className="btn">
                           DOUBLE OR NOTHING
                         </Button>
                       </div>
