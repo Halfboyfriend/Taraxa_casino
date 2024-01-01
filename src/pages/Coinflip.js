@@ -145,7 +145,7 @@ function Coinflip() {
                   </div>
                 </div>
 
-                <div>
+                <div className="form__tab">
                   <form>
                     <label>
                       Amount: <input type="number" required />
@@ -161,7 +161,7 @@ function Coinflip() {
                         <span>1700TARA</span>
                       </div>
                       <div className="mt-3">
-                        <Button fluid primary className="btn">
+                        <Button fluid primary className="form__btn">
                           DOUBLE OR NOTHING
                         </Button>
                       </div>

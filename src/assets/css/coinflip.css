@@ -104,7 +104,10 @@ main {
     padding: 40px 20px;
     border-radius: 20px;
     border: 2px solid #17C267;
+}
 
+.play__background .form__tab{
+    /* display: none; */
 }
 
 .play__background form label {
@@ -248,6 +251,26 @@ linear-gradient(0deg, #575757, #575757);
         font-size: 14px;
     }
 
+    .play__background {
+        padding: 20px 10px;
+        border-radius: 20px;
+        border: 2px solid #17C267;
+    }
+    .play__background .play__content{
+        display: inline;
+    }
+    .play__background form label input {
+       width: 50px;
+    }
+    .play__background .select__section .select__display {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+    }
+    .play__background .select__section .form__btn{
+        font-size: 8px;
+    }
+
     .play__background .play__content .coin__image img {
         width: 100px;
         height: 100px;
@@ -260,6 +283,7 @@ linear-gradient(0deg, #575757, #575757);
     }
     .play__background .select__section .select__display span {
         font-size: 10px;
+        padding: 5px;
     }
     
     .coin__image h4{
