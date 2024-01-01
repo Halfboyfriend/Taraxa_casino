@@ -26,6 +26,9 @@ import rocket from "../assets/images/casino/game-options/rocket.png";
 import round from "../assets/images/casino/game-options/round.png";
 import seven from "../assets/images/casino/game-options/seven.png";
 import bolly from "../assets/images/casino/game-options/lotto.png";
+import Leaderboard from "../components/Leaderboard";
+
+
 
 
 function Coinflip() {
@@ -177,7 +180,10 @@ function Coinflip() {
             </div>
           </section>
 
-          <section className="py-5"></section>
+          <section className="py-5">
+
+            <Leaderboard/>
+          </section>
 
           <section className="py-3">
           <div className="casino__games">

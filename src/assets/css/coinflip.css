@@ -272,7 +272,7 @@ linear-gradient(0deg, #575757, #575757);
         display: inline;
     }
     .play__background form label input {
-       width: 50px;
+       width: 80px;
     }
     .play__background .select__section .select__display {
         display: grid;

@@ -1,0 +1,46 @@
+.leader__select{
+    border: 1px solid ;
+    border-radius: 10px;
+    padding: 15px 10px;
+    max-width: 390px;
+    background-color: #1B1E22;
+}
+
+.leader__select span{
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.leader__select .active{
+    background-color: #000;
+}
+
+.leader__table{
+    border: 2px solid #151515;
+    border-radius: 20px;
+    padding: 15px 10px;
+    background: #151515;
+}
+
+@media only screen and (max-width: 768px){
+    .leader__select{
+        font-size: 8px;
+        border: 1px solid ;
+        border-radius: 10px;
+        padding: 15px 10px;
+        max-width: 270px;
+        background-color: #1B1E22;
+    }
+    .leader__select span{
+        border: 1px solid #000;
+        border-radius: 5px;
+        padding: 10px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+    
+    
+}
