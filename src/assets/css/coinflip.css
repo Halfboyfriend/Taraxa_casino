@@ -176,6 +176,18 @@ linear-gradient(0deg, #575757, #575757);
     background-color: #0F7B41;
 }
 
+.casino__games .more__display{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-gap: 10px;
+}
+.casino__games .more__display .pg img{
+    width: 400px;
+    height: 200px;
+    cursor: pointer;
+}
+
+
 @media only screen and (max-width: 768px) {
     header {
         position: fixed;
@@ -289,6 +301,17 @@ linear-gradient(0deg, #575757, #575757);
     .coin__image h4{
         font-size: 14px;
     }
+
+    .casino__games .more__display{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        grid-gap: 5px;
+    }
+    .casino__games .more__display .pg img{
+        width: 120px;
+        height: 100px;
+    }
+    
 
 
 }

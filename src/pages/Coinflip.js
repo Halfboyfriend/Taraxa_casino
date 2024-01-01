@@ -20,7 +20,12 @@ import head from "../assets/images/casino/coinflip/heads/head.png";
 import head_pick from "../assets/images/casino/coinflip/heads/pick.png";
 import tail from "../assets/images/casino/coinflip/tails/tail.png";
 import tail_pick from "../assets/images/casino/coinflip/tails/pick.png";
-
+import { Link } from "react-router-dom";
+import dicie from "../assets/images/casino/game-options/dice.png";
+import rocket from "../assets/images/casino/game-options/rocket.png";
+import round from "../assets/images/casino/game-options/round.png";
+import seven from "../assets/images/casino/game-options/seven.png";
+import bolly from "../assets/images/casino/game-options/lotto.png";
 
 
 function Coinflip() {
@@ -133,15 +138,13 @@ function Coinflip() {
           <section className="py-5">
             <div className="play__background">
               <div className="play__content">
-
-
                 <div className="coin__image">
                   <img src={head} alt="." />
                   <h4>PICK A SIDE</h4>
 
                   <div className="coin__options">
-                    <img src={head_pick} alt="."/>
-                    <img src={tail_pick} alt="."/>
+                    <img src={head_pick} alt="." />
+                    <img src={tail_pick} alt="." />
                   </div>
                 </div>
 
@@ -173,6 +176,47 @@ function Coinflip() {
               <p className="text-center mt-5">3% fees apply for every flip.</p>
             </div>
           </section>
+
+          <section className="py-5"></section>
+
+          <section className="py-3">
+          <div className="casino__games">
+            <h3>More Original games</h3>
+
+            <div className="more__display">
+              <div className="pg">
+                {" "}
+              
+                  <img src={bolly} alt="." />
+                <div className="mt-2 active">
+                
+                </div>
+              </div>
+
+              <div className="pg">
+                {" "}
+                <img src={dicie} alt="." />
+               
+              </div>
+              <div className="pg">
+                {" "}
+                <img src={rocket} alt="." />
+               
+              </div>
+              <div className="pg">
+                {" "}
+                <img src={round} alt="." />
+               
+              </div>
+              {/* <div className="zone"> <img src={lotto} alt="." /> </div> */}
+              <div className="pg">
+                {" "}
+                <img src={seven} alt="." />
+               
+              </div>
+            </div>
+          </div>
+        </section>
         </main>
       </div>
     </>

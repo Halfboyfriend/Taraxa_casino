@@ -4,7 +4,6 @@ import { Button, Container } from "semantic-ui-react";
 import brand from "../assets/images/casino/logo/brandlogo.png";
 import brand_btn from "../assets/images/casino/logo/buttonlogo.png";
 import dice from "../assets/images/casino/game-options/dice.png";
-import lotto from "../assets/images/casino/game-options/lotto.png";
 import rocket from "../assets/images/casino/game-options/rocket.png";
 import round from "../assets/images/casino/game-options/round.png";
 import seven from "../assets/images/casino/game-options/seven.png";
