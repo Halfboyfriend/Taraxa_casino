@@ -56,11 +56,11 @@ table {
         border-collapse: collapse;
         margin: auto;
         width: 100%;
-        font-size: 8px;
+        font-size: 9px;
       }
     
       td {
-        padding: 0px;
+        padding: 2px;
       }
     
     
