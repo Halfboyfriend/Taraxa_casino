@@ -51,5 +51,17 @@ table {
         cursor: pointer;
     }
     
+
+    table {
+        border-collapse: collapse;
+        margin: auto;
+        width: 100%;
+        font-size: 8px;
+      }
+    
+      td {
+        padding: 0px;
+      }
+    
     
 }
