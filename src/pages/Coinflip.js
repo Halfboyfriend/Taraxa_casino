@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../assets/css/coinflip.css";
 import "../assets/css/styles.css";
 import { Container, Button, Form, Input, Label } from "semantic-ui-react";
@@ -20,7 +20,6 @@ import head from "../assets/images/casino/coinflip/heads/head.png";
 import head_pick from "../assets/images/casino/coinflip/heads/pick.png";
 import tail from "../assets/images/casino/coinflip/tails/tail.png";
 import tail_pick from "../assets/images/casino/coinflip/tails/pick.png";
-import { Link } from "react-router-dom";
 import dicie from "../assets/images/casino/game-options/dice.png";
 import rocket from "../assets/images/casino/game-options/rocket.png";
 import round from "../assets/images/casino/game-options/round.png";
@@ -28,10 +27,20 @@ import seven from "../assets/images/casino/game-options/seven.png";
 import bolly from "../assets/images/casino/game-options/lotto.png";
 import Leaderboard from "../components/Leaderboard";
 
-
-
-
 function Coinflip() {
+  const [coinhead, setHead] = useState(false);
+  const [cointail, setTail] = useState(false);
+
+  function setHeadFunction() {
+    setTail(false);
+    setHead(true);
+  }
+
+  function setTailFunction() {
+    setHead(false);
+    setTail(true);
+  }
+
   return (
     <>
       <div className="container">
@@ -142,12 +151,17 @@ function Coinflip() {
             <div className="play__background">
               <div className="play__content">
                 <div className="coin__image">
-                  <img src={head} alt="." />
+                  {coinhead ? (
+                    <img src={head} alt="." />
+                  ) : (
+                    <img src={tail} alt="." />
+                  )}
+
                   <h4>PICK A SIDE</h4>
 
                   <div className="coin__options">
-                    <img src={head_pick} alt="." />
-                    <img src={tail_pick} alt="." />
+                    <img src={head_pick} alt="." onClick={setHeadFunction} />
+                    <img src={tail_pick} alt="." onClick={setTailFunction} />
                   </div>
                 </div>
 
@@ -181,48 +195,40 @@ function Coinflip() {
           </section>
 
           <section className="py-5">
-
-            <Leaderboard/>
+            <Leaderboard />
           </section>
 
           <section className="py-3">
-          <div className="casino__games">
-            <h3>More Original games</h3>
+            <div className="casino__games">
+              <h3>More Original games</h3>
 
-            <div className="more__display">
-              <div className="pg">
-                {" "}
-              
+              <div className="more__display">
+                <div className="pg">
+                  {" "}
                   <img src={bolly} alt="." />
-                <div className="mt-2 active">
-                
+                  <div className="mt-2 active"></div>
+                </div>
+
+                <div className="pg">
+                  {" "}
+                  <img src={dicie} alt="." />
+                </div>
+                <div className="pg">
+                  {" "}
+                  <img src={rocket} alt="." />
+                </div>
+                <div className="pg">
+                  {" "}
+                  <img src={round} alt="." />
+                </div>
+                {/* <div className="zone"> <img src={lotto} alt="." /> </div> */}
+                <div className="pg">
+                  {" "}
+                  <img src={seven} alt="." />
                 </div>
               </div>
-
-              <div className="pg">
-                {" "}
-                <img src={dicie} alt="." />
-               
-              </div>
-              <div className="pg">
-                {" "}
-                <img src={rocket} alt="." />
-               
-              </div>
-              <div className="pg">
-                {" "}
-                <img src={round} alt="." />
-               
-              </div>
-              {/* <div className="zone"> <img src={lotto} alt="." /> </div> */}
-              <div className="pg">
-                {" "}
-                <img src={seven} alt="." />
-               
-              </div>
             </div>
-          </div>
-        </section>
+          </section>
         </main>
       </div>
     </>
