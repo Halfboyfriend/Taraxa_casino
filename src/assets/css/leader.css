@@ -24,6 +24,15 @@
     padding: 15px 10px;
     background: #151515;
 }
+table {
+    border-collapse: collapse;
+    margin: auto;
+    width: 100%;
+  }
+
+  td {
+    padding: 10px;
+  }
 
 @media only screen and (max-width: 768px){
     .leader__select{
