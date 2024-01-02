@@ -159,12 +159,12 @@ function Coinflip() {
 
                     <div className="select__section">
                       <div className="select__display">
+                        <span>100TARA</span>
                         <span>500TARA</span>
-                        <span>1000TARA</span>
-                        <span>3500TARA</span>
-                        <span>700TARA</span>
-                        <span>10500TARA</span>
-                        <span>1700TARA</span>
+                        <span>1500TARA</span>
+                        <span>3000TARA</span>
+                        <span>5000TARA</span>
+                        <span>10000TARA</span>
                       </div>
                       <div className="mt-3">
                         <Button fluid primary className="form__btn">
