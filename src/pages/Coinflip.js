@@ -26,19 +26,72 @@ import round from "../assets/images/casino/game-options/round.png";
 import seven from "../assets/images/casino/game-options/seven.png";
 import bolly from "../assets/images/casino/game-options/lotto.png";
 import Leaderboard from "../components/Leaderboard";
+import { formatAddress } from "../utils/formatter";
+import { connect } from "../utils/connectWallet";
 
 function Coinflip() {
   const [coinhead, setHead] = useState(false);
   const [cointail, setTail] = useState(false);
+  const [value, setValue] = useState(0);
+  const [choice, setChoice] = useState(null);
+  const [user, setUser] = useState(null);
+
+  async function handleWallet() {
+    const {address, signer, provider} = await connect();
+    setUser(address);
+  }
+
+  async function handleSubmition(e) {
+    e.preventDefault();
+    let choiceWord = "";
+    if (choice === 1) {
+      choiceWord = "Head";
+    } else {
+      choiceWord = "Tail";
+    }
+    if (value < 100) {
+      alert("Minimum value is 100TARA");
+    } else {
+      if(user){
+        alert(`Your value is ${value} and you picked ${choiceWord}`);
+
+      }else{
+      alert("Please connect your wallet");
+
+      }
+
+    }
+  }
 
   function setHeadFunction() {
     setTail(false);
     setHead(true);
+    setChoice(1);
   }
 
   function setTailFunction() {
     setHead(false);
     setTail(true);
+    setChoice(0);
+  }
+
+  function setHundred() {
+    setValue(100);
+  }
+  function setFiveHundred() {
+    setValue(500);
+  }
+  function setThousand() {
+    setValue(1500);
+  }
+  function setThreeThousand() {
+    setValue(3000);
+  }
+  function setFiveThousand() {
+    setValue(5000);
+  }
+  function setTenThousand() {
+    setValue(10000);
   }
 
   return (
@@ -144,7 +197,12 @@ function Coinflip() {
           <p>How to play?</p>
           <div className="wallet__connect">
             <img src={brand_btn} alt="." />
-            <Button className="button">connect</Button>
+
+            {user ?
+            <Button className="button"> {formatAddress(user)} </Button>
+            :
+            <Button className="button" onClick={handleWallet}>connect</Button>
+          }
           </div>
 
           <section className="py-5">
@@ -166,19 +224,26 @@ function Coinflip() {
                 </div>
 
                 <div className="form__tab">
-                  <form>
+                  <form onSubmit={handleSubmition}>
                     <label>
-                      Amount: <input type="number" required />
+                      Amount:{" "}
+                      <input
+                        type="number"
+                        value={value}
+                        placeholder="Input value"
+                        onChange={(e) => setValue(e.target.value)}
+                        required
+                      />
                     </label>
 
                     <div className="select__section">
                       <div className="select__display">
-                        <span>100TARA</span>
-                        <span>500TARA</span>
-                        <span>1500TARA</span>
-                        <span>3000TARA</span>
-                        <span>5000TARA</span>
-                        <span>10000TARA</span>
+                        <span onClick={setHundred}>100TARA</span>
+                        <span onClick={setFiveHundred}>500TARA</span>
+                        <span onClick={setThousand}>1500TARA</span>
+                        <span onClick={setThreeThousand}>3000TARA</span>
+                        <span onClick={setFiveThousand}>5000TARA</span>
+                        <span onClick={setTenThousand}>10000TARA</span>
                       </div>
                       <div className="mt-3">
                         <Button fluid primary className="form__btn">

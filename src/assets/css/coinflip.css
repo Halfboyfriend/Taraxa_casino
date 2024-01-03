@@ -311,7 +311,9 @@ linear-gradient(0deg, #575757, #575757);
         width: 120px;
         height: 100px;
     }
-    
+    .form__tab{
+        margin-top: 25px;
+    }
 
 
 }
