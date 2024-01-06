@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../assets/css/coinflip.css";
 import "../assets/css/styles.css";
-import { Container, Button, Form, Input, Label } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import brand from "../assets/images/casino/logo/brandlogo.png";
 import brand_btn from "../assets/images/casino/logo/buttonlogo.png";
 import coin from "../assets/images/casino/games-nav-icon/coinflip.png";
@@ -28,6 +28,8 @@ import bolly from "../assets/images/casino/game-options/lotto.png";
 import Leaderboard from "../components/Leaderboard";
 import { formatAddress } from "../utils/formatter";
 import { connect } from "../utils/connectWallet";
+import { ethers } from "ethers";
+import { ToastContainer, toast } from "react-toastify";
 
 function Coinflip() {
   const [coinhead, setHead] = useState(false);
@@ -35,32 +37,131 @@ function Coinflip() {
   const [value, setValue] = useState(0);
   const [choice, setChoice] = useState(null);
   const [user, setUser] = useState(null);
+  const [winnings, setWinnings] = useState(0);
+  const [loadBet, setLoadingBet] = useState(false);
+  const [loadWithdrawal, setloadWithdrawal] = useState(false);
+
+  useEffect(() => {
+    if (!user) {
+      handleWallet();
+    }
+  }, []);
+
+  const erc20TokenAddress = "0x7f527bE2e705A2428615a041082B7409c392cf33";
+
+  const requestApproval = async (amount) => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const Spender = "0x89aaf7E8348C62135b75Bb6a1e49B55b4fA059f0";
+
+    const erc20Token = new ethers.Contract(
+      erc20TokenAddress,
+      ["function approve(address spender, uint256 amount) returns (bool)"],
+      signer
+    );
+    try {
+      const amountInWei = ethers.utils.parseUnits(amount.toString(), "ether");
+      const approvalTx = await erc20Token.approve(Spender, amountInWei, {
+        gasPrice: ethers.utils.parseUnits("100", "gwei"),
+      });
+      await approvalTx.wait();
+      console.log("Spending approval successful!");
+      toast.success("Spending approval successful!");
+      return true;
+    } catch (error) {
+      console.error("Error requesting spending approval:", error);
+      toast.error("Error requesting spending approval");
+    }
+  };
 
   async function handleWallet() {
-    const {address, signer, provider} = await connect();
+    toast.warning("Please confirm action in your wallet");
+    const { address, signer, provider, instance } = await connect();
     setUser(address);
+    try {
+      const response = await instance.connect(signer).playerWinnings(address);
+      const etherAmount = ethers.utils.formatUnits(
+        response.toString(),
+        "ether"
+      );
+      setWinnings(etherAmount);
+    } catch (err) {
+      console.log(err);
+      toast.error("Error: User rejected");
+    }
+    toast.success("Wallet connected successfully");
+  }
+
+  async function withdrawWinnings() {
+    setloadWithdrawal(true);
+    if (winnings > 0) {
+      toast.warning("Please approve transaction in your wallet");
+
+      try {
+        const { signer, instance } = await connect();
+        const response = await instance.connect(signer).withdrawUserWinnings();
+        console.log(response);
+        setloadWithdrawal(false);
+        toast.success("Request to withdraw player winings was successfull");
+      } catch (err) {
+        console.log(err);
+        setloadWithdrawal(false);
+        toast.error("Ops, an error occured...please try again");
+      }
+    } else {
+      toast.error("Your winings balance is 0");
+    }
+
+    setloadWithdrawal(false);
   }
 
   async function handleSubmition(e) {
+    setLoadingBet(true);
     e.preventDefault();
     let choiceWord = "";
     if (choice === 1) {
       choiceWord = "Head";
-    } else {
+    } else if (choice === 0) {
       choiceWord = "Tail";
+    } else {
+      toast.warning("You must pick either Head or Tail");
     }
     if (value < 100) {
-      alert("Minimum value is 100TARA");
-    } else {
-      if(user){
-        alert(`Your value is ${value} and you picked ${choiceWord}`);
+      toast.warning("Minimum value is 100TARA");
+      setLoadingBet(false);
+    } else if (choice != null) {
+      try {
+        const { signer, instance } = await connect();
+        toast.info("Approve spending cap in your wallet");
+        const ret = await requestApproval(value);
 
-      }else{
-      alert("Please connect your wallet");
-
+        if (ret) {
+          toast.info("Approve bet transaction in your wallet");
+          const WeiValue = ethers.utils.parseUnits(value.toString(), "ether");
+          console.log(WeiValue, choice);
+          const gasLimit = 500000;
+          const response = await instance
+            .connect(signer)
+            .flip(choice, WeiValue, { gasLimit });
+          console.log(response);
+          toast.success(
+            "Congratulations, your bet was succefully placed... Happy earnings!"
+          );
+          setLoadingBet(false);
+        } else {
+          console.log("Rejected spending cap");
+          setLoadingBet(false);
+        }
+      } catch (error) {
+        console.log(error);
+        toast.error("Ops, an error occured... User rejected transaction");
+        setLoadingBet(false);
       }
-
+    } else {
+      toast.warning("You must pick either Head or Tail");
+      setLoadingBet(false);
     }
+    setLoadingBet(false);
   }
 
   function setHeadFunction() {
@@ -194,15 +295,18 @@ function Coinflip() {
         </div>
 
         <main className="">
+          <ToastContainer />
           <p>How to play?</p>
           <div className="wallet__connect">
             <img src={brand_btn} alt="." />
 
-            {user ?
-            <Button className="button"> {formatAddress(user)} </Button>
-            :
-            <Button className="button" onClick={handleWallet}>connect</Button>
-          }
+            {user ? (
+              <Button className="button"> {formatAddress(user)} </Button>
+            ) : (
+              <Button className="button" onClick={handleWallet}>
+                connect
+              </Button>
+            )}
           </div>
 
           <section className="py-5">
@@ -246,13 +350,29 @@ function Coinflip() {
                         <span onClick={setTenThousand}>10000TARA</span>
                       </div>
                       <div className="mt-3">
-                        <Button fluid primary className="form__btn">
+                        <Button
+                          fluid
+                          primary
+                          className="form__btn"
+                          loading={loadBet}
+                        >
                           DOUBLE OR NOTHING
                         </Button>
                       </div>
                     </div>
                   </form>
                 </div>
+              </div>
+
+              <div className="mt-5">
+                <h4>Player Earnings: {winnings} </h4>
+                <Button
+                  primary
+                  onClick={withdrawWinnings}
+                  loading={loadWithdrawal}
+                >
+                  Withdraw
+                </Button>
               </div>
 
               <p className="text-center mt-5">3% fees apply for every flip.</p>

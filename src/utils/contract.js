@@ -9,20 +9,6 @@ export const ABI = [
   {
     anonymous: false,
     inputs: [
-      { indexed: false, internalType: "address", name: "to", type: "address" },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "Claim",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
       {
         indexed: true,
         internalType: "address",
@@ -39,13 +25,50 @@ export const ABI = [
     name: "OwnershipTransferred",
     type: "event",
   },
-  { stateMutability: "payable", type: "fallback" },
   {
-    inputs: [],
-    name: "airdrop",
-    outputs: [],
-    stateMutability: "payable",
-    type: "function",
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "result",
+        type: "uint256",
+      },
+    ],
+    name: "filpFinshed",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "string",
+        name: "description",
+        type: "string",
+      },
+    ],
+    name: "logNewProvableQuery",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "caller",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    name: "userWithdrawal",
+    type: "event",
   },
   {
     inputs: [{ internalType: "uint256", name: "amount", type: "uint256" }],
@@ -55,26 +78,54 @@ export const ABI = [
     type: "function",
   },
   {
-    inputs: [
-      { internalType: "address", name: "tokenAddress", type: "address" },
-      { internalType: "uint256", name: "amount", type: "uint256" },
-    ],
-    name: "claimToken",
-    outputs: [],
-    stateMutability: "nonpayable",
+    inputs: [],
+    name: "contractBalance",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "_amount", type: "uint256" }],
-    name: "deposit",
+    inputs: [
+      { internalType: "uint256", name: "oneZero", type: "uint256" },
+      { internalType: "uint256", name: "amount", type: "uint256" },
+    ],
+    name: "flip",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
     inputs: [],
+    name: "freeCallback",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "uint256", name: "amount", type: "uint256" }],
+    name: "fundContract",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getWinningsBalance",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
     name: "owner",
     outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "", type: "address" }],
+    name: "playerWinnings",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
     type: "function",
   },
@@ -86,10 +137,12 @@ export const ABI = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "token",
-    outputs: [{ internalType: "contract IERC20", name: "", type: "address" }],
-    stateMutability: "view",
+    inputs: [
+      { internalType: "address", name: "_tokenAddress", type: "address" },
+    ],
+    name: "setToken",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -100,12 +153,39 @@ export const ABI = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "_amount", type: "uint256" }],
-    name: "withdraw",
+    inputs: [{ internalType: "address", name: "", type: "address" }],
+    name: "waiting",
+    outputs: [
+      { internalType: "address", name: "playerAddress", type: "address" },
+      { internalType: "uint256", name: "betValue", type: "uint256" },
+      { internalType: "uint256", name: "headsTails", type: "uint256" },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "withdrawAll",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
-  { stateMutability: "payable", type: "receive" },
+  {
+    inputs: [
+      { internalType: "address", name: "_tokenContract", type: "address" },
+      { internalType: "uint256", name: "_amount", type: "uint256" },
+    ],
+    name: "withdrawToken",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "withdrawUserWinnings",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
 ];
-export const contractAddress = "0x802dE034E98be28c87216c30e65a005788EAd50c";
+export const contractAddress = "0x89aaf7E8348C62135b75Bb6a1e49B55b4fA059f0";
