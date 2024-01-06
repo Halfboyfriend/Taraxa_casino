@@ -118,7 +118,7 @@ function Coinflip() {
       setWinnings(etherAmount);
     } catch (err) {
       console.log(err);
-      toast.error("Error: User rejected");
+      // toast.error("Error: User rejected");
     }
     // toast.success("Wallet connected successfully");
   }
@@ -149,7 +149,6 @@ function Coinflip() {
     setloadWithdrawal(false);
   }
 
-  function test() {}
 
   async function handleSubmition(e) {
     setLoadingBet(true);
@@ -423,9 +422,7 @@ function Coinflip() {
                 </div>
               </div>
 
-              <p>
-                <Button onClick={test}>Text Alert</Button>
-              </p>
+          
 
               <div className="mt-5">
                 <h4>Player Earnings: {winnings} </h4>
