@@ -75,8 +75,38 @@ function Coinflip() {
     }
   };
 
+  async function WinOrLose(wager, choice) {
+    const { address, signer, provider, instance } = await connect();
+    try {
+      const response = await instance.connect(signer).playerWinnings(address);
+      const etherAmount = ethers.utils.formatUnits(
+        response.toString(),
+        "ether"
+      );
+      if (etherAmount > winnings) {
+        handleWallet();
+        Swal.fire({
+          icon: "success",
+          title: `Congratulations... You won ${wager * 2}TARA`,
+          showConfirmButton: false,
+          timer: 15000,
+        });
+      } else {
+        handleWallet();
+        Swal.fire({
+          icon: "error",
+          title: `Ops, That was a lost... You can play again`,
+          showConfirmButton: false,
+          timer: 15000,
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   async function handleWallet() {
-    toast.warning("Please confirm action in your wallet");
+    // toast.warning("Please confirm action in your wallet");
     const { address, signer, provider, instance } = await connect();
     setUser(address);
     try {
@@ -90,7 +120,7 @@ function Coinflip() {
       console.log(err);
       toast.error("Error: User rejected");
     }
-    toast.success("Wallet connected successfully");
+    // toast.success("Wallet connected successfully");
   }
 
   async function withdrawWinnings() {
@@ -104,6 +134,9 @@ function Coinflip() {
         console.log(response);
         setloadWithdrawal(false);
         toast.success("Request to withdraw player winings was successfull");
+        setTimeout(function () {
+          handleWallet();
+        }, 5000);
       } catch (err) {
         console.log(err);
         setloadWithdrawal(false);
@@ -116,28 +149,7 @@ function Coinflip() {
     setloadWithdrawal(false);
   }
 
-  function test() {
-    Swal.fire({
-      title: "<strong>Approve bet transaction in your wallet </strong>",
-      html: `<p> 
-    Total bet: <b>{value}TARA</b></p>
-    <p>
-    To Wining: {
-      value * 2}TARA
-    </p>
-    <p>Player Choice: {choiceWord} </p>
-  `,
-      width: 400,
-      padding: "1em",
-      color: "#fff",
-      imageUrl: "https://play-lh.googleusercontent.com/OPlZ1l5oIjJJ9J_i5t8DcvyKcyib54MngCErNh6snS0gvog5oiKI9mpMru_Q7fzhyVI",
-      imageWidth: 200,
-      imageHeight: 150,
-      imageAlt: "CoinFlip",
-      background: "linear-gradient(180deg, #000 60%, #00873F)",
-  
-    });
-  }
+  function test() {}
 
   async function handleSubmition(e) {
     setLoadingBet(true);
@@ -161,10 +173,24 @@ function Coinflip() {
 
         if (ret) {
           Swal.fire({
-            text: `Approve bet transaction in your wallet \n`,
-            icon: "info",
-            padding: "3em",
-            color: "#716add",
+            title: "<strong>Approve bet transaction in your wallet </strong>",
+            html: `<p> 
+          Total bet: <b>${value}TARA</b></p>
+          <p>
+          To Wining: ${value * 2}TARA
+          </p>
+          <p>Player Choice: ${choiceWord} </p>
+        `,
+            width: 400,
+            padding: "1em",
+            showConfirmButton: false,
+            color: "#fff",
+            imageUrl:
+              "https://play-lh.googleusercontent.com/OPlZ1l5oIjJJ9J_i5t8DcvyKcyib54MngCErNh6snS0gvog5oiKI9mpMru_Q7fzhyVI",
+            imageWidth: 200,
+            imageHeight: 150,
+            imageAlt: "CoinFlip",
+            background: "linear-gradient(180deg, #000 60%, #00873F)",
             backdrop: `rgba(0,0,0,0.8)`,
           });
           const WeiValue = ethers.utils.parseUnits(value.toString(), "ether");
@@ -178,6 +204,9 @@ function Coinflip() {
             "Congratulations, your bet was succefully placed... Happy earnings!"
           );
           setLoadingBet(false);
+          setTimeout(async function () {
+            await WinOrLose(value, choice);
+          }, 5000);
         } else {
           console.log("Rejected spending cap");
           setLoadingBet(false);
