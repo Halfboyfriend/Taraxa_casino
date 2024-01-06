@@ -30,6 +30,7 @@ import { formatAddress } from "../utils/formatter";
 import { connect } from "../utils/connectWallet";
 import { ethers } from "ethers";
 import { ToastContainer, toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 function Coinflip() {
   const [coinhead, setHead] = useState(false);
@@ -115,6 +116,29 @@ function Coinflip() {
     setloadWithdrawal(false);
   }
 
+  function test() {
+    Swal.fire({
+      title: "<strong>Approve bet transaction in your wallet </strong>",
+      html: `<p> 
+    Total bet: <b>{value}TARA</b></p>
+    <p>
+    To Wining: {
+      value * 2}TARA
+    </p>
+    <p>Player Choice: {choiceWord} </p>
+  `,
+      width: 400,
+      padding: "1em",
+      color: "#fff",
+      imageUrl: "https://play-lh.googleusercontent.com/OPlZ1l5oIjJJ9J_i5t8DcvyKcyib54MngCErNh6snS0gvog5oiKI9mpMru_Q7fzhyVI",
+      imageWidth: 200,
+      imageHeight: 150,
+      imageAlt: "CoinFlip",
+      background: "linear-gradient(180deg, #000 60%, #00873F)",
+  
+    });
+  }
+
   async function handleSubmition(e) {
     setLoadingBet(true);
     e.preventDefault();
@@ -136,7 +160,13 @@ function Coinflip() {
         const ret = await requestApproval(value);
 
         if (ret) {
-          toast.info("Approve bet transaction in your wallet");
+          Swal.fire({
+            text: `Approve bet transaction in your wallet \n`,
+            icon: "info",
+            padding: "3em",
+            color: "#716add",
+            backdrop: `rgba(0,0,0,0.8)`,
+          });
           const WeiValue = ethers.utils.parseUnits(value.toString(), "ether");
           console.log(WeiValue, choice);
           const gasLimit = 500000;
@@ -363,6 +393,10 @@ function Coinflip() {
                   </form>
                 </div>
               </div>
+
+              <p>
+                <Button onClick={test}>Text Alert</Button>
+              </p>
 
               <div className="mt-5">
                 <h4>Player Earnings: {winnings} </h4>
