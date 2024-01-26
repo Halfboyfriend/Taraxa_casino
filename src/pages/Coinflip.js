@@ -48,12 +48,12 @@ function Coinflip() {
     }
   }, []);
 
-  const erc20TokenAddress = "0x7f527bE2e705A2428615a041082B7409c392cf33";
+  const erc20TokenAddress = "0x9bFF260c55e1E185e775f54FEAbeE884E9dAd9d8";
 
   const requestApproval = async (amount) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
-    const Spender = "0x89aaf7E8348C62135b75Bb6a1e49B55b4fA059f0";
+    const Spender = "0x10Ad7b3EC896E244d4F3C2Bceeaa32f0A1DDCb9e";
 
     const erc20Token = new ethers.Contract(
       erc20TokenAddress,

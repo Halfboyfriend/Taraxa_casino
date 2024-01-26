@@ -1,12 +1,12 @@
 
 export const supportedChain = {
-    id: 97,  // 97 is the BSC Testnet chain ID
-    idString: "0x61",  // Hex representation of the chain ID
-    name: "BSC Testnet",
-    rpcUrl: "https://data-seed-prebsc-1-s1.binance.org:8545/",  // BSC Testnet RPC endpoint
-    explorerUrl: "https://testnet.bscscan.com/",  // BSC Testnet Explorer URL
+    id: 841,  // 97 is the BSC Testnet chain ID
+    idString: "0x349",  // Hex representation of the chain ID
+    name: "Taraxa Mainnet",
+    rpcUrl: "https://rpc.mainnet.taraxa.io",  // BSC Testnet RPC endpoint
+    explorerUrl: "https://explorer.mainnet.taraxa.io",  // BSC Testnet Explorer URL
     nativeCurrency: {
-      symbol: "BNB",  // BNB is the native currency on BSC
+      symbol: "TARA",  // BNB is the native currency on BSC
       decimals: 18,
     },
   };
