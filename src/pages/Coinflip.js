@@ -371,17 +371,18 @@ function Coinflip() {
             <div className="play__background">
               <div className="play__content">
                 <div className="coin__image">
-                  {coinhead ? (
-                    <img className="head" src={head} alt="." />
+                  {cointail ? (
+                   <img src={tail} className="tail" alt="." />
                   ) : (
-                    <img src={tail} alt="." />
+                    
+                    <img className="head" src={head} alt="." />
                   )}
 
                   <h4>PICK A SIDE</h4>
 
                   <div className="coin__options">
-                    <img src={head_pick} alt="." onClick={setHeadFunction} />
-                    <img src={tail_pick} alt="." onClick={setTailFunction} />
+                    <img src={head_pick} className="head__opt" alt="." onClick={setHeadFunction} />
+                    <img src={tail_pick} className="tail__opt" alt="." onClick={setTailFunction} />
                   </div>
                 </div>
 
