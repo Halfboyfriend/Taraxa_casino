@@ -372,7 +372,7 @@ function Coinflip() {
               <div className="play__content">
                 <div className="coin__image">
                   {coinhead ? (
-                    <img src={head} alt="." />
+                    <img className="head" src={head} alt="." />
                   ) : (
                     <img src={tail} alt="." />
                   )}
@@ -398,7 +398,7 @@ function Coinflip() {
                       />
                     </label>
 
-                    <div className="select__section">
+                    <div className="select__section mt-2">
                       <div className="select__display">
                         <span onClick={setHundred}>100TARA</span>
                         <span onClick={setFiveHundred}>500TARA</span>

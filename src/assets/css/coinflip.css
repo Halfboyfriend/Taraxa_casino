@@ -11,6 +11,10 @@ header .brand__img img {
     height: 41px
 }
 
+/* input{
+    background-color: transparent;
+} */
+
 main .wallet__connect {
     float: right;
     border: 0.1rem solid #15AC5B;
@@ -50,7 +54,7 @@ main .wallet__connect .button {
 }
 
 .navbar ul {
-    border-right: 1px solid #151515;
+    border-right: 1px solid inherit;
     margin-top: 20px;
     height: 83vh;
 }
@@ -137,10 +141,11 @@ linear-gradient(0deg, #575757, #575757);
 .play__background .play__content .coin__image {
     text-align: center;
 }
-
+.play__background .play__content .coin__image .head{
+    width: 150px;
+}
 .play__background .play__content .coin__image img {
     width: 185.21px;
-    height: 185.26px;
 }
 
 .play__background .play__content .coin__options img {
