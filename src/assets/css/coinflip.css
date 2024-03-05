@@ -54,7 +54,7 @@ main .wallet__connect .button {
 }
 
 .navbar ul {
-    border-right: 1px solid inherit;
+    border-right: none;
     margin-top: 20px;
     height: 83vh;
 }
