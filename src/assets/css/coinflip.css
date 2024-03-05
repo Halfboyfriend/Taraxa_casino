@@ -110,9 +110,6 @@ main {
     border: 2px solid #17C267;
 }
 
-.play__background .form__tab{
-    /* display: none; */
-}
 
 .play__background form label {
     border: 2px solid #fff;
