@@ -354,7 +354,7 @@ function Coinflip() {
 
         <main className="">
           <ToastContainer />
-          <p>How to play ?....</p>
+          <p>How to play ?</p>
           <div className="wallet__connect">
             <img src={brand_btn} alt="." />
 
