@@ -87,7 +87,7 @@ function Coinflip() {
         handleWallet();
         Swal.fire({
           icon: "success",
-          title: `Congratulations... You won ${wager * 2}TARA`,
+          title: `Congratulations... You won ${wager * 2}TCS`,
           showConfirmButton: false,
           timer: 15000,
         });
@@ -95,7 +95,7 @@ function Coinflip() {
         handleWallet();
         Swal.fire({
           icon: "error",
-          title: `Ops, That was a lost... You can play again`,
+          title: `Ops, you chose the wrong side. Try again`,
           showConfirmButton: false,
           timer: 15000,
         });
@@ -162,7 +162,7 @@ function Coinflip() {
       toast.warning("You must pick either Head or Tail");
     }
     if (value < 100) {
-      toast.warning("Minimum value is 100TARA");
+      toast.warning("Minimum value is 100TCS");
       setLoadingBet(false);
     } else if (choice != null) {
       try {
@@ -174,9 +174,9 @@ function Coinflip() {
           Swal.fire({
             title: "<strong>Approve bet transaction in your wallet </strong>",
             html: `<p> 
-          Total bet: <b>${value}TARA</b></p>
+          Total bet: <b>${value}TCS</b></p>
           <p>
-          To Wining: ${value * 2}TARA
+          To Wining: ${value * 2}TCS
           </p>
           <p>Player Choice: ${choiceWord} </p>
         `,
@@ -401,12 +401,12 @@ function Coinflip() {
 
                     <div className="select__section mt-2">
                       <div className="select__display">
-                        <span onClick={setHundred}>100TARA</span>
-                        <span onClick={setFiveHundred}>500TARA</span>
-                        <span onClick={setThousand}>1500TARA</span>
-                        <span onClick={setThreeThousand}>3000TARA</span>
-                        <span onClick={setFiveThousand}>5000TARA</span>
-                        <span onClick={setTenThousand}>10000TARA</span>
+                        <span onClick={setHundred}>100TCS</span>
+                        <span onClick={setFiveHundred}>500TCS</span>
+                        <span onClick={setThousand}>1500TCS</span>
+                        <span onClick={setThreeThousand}>3000TCS</span>
+                        <span onClick={setFiveThousand}>5000TCS</span>
+                        <span onClick={setTenThousand}>10000TCS</span>
                       </div>
                       <div className="mt-3">
                         <Button
