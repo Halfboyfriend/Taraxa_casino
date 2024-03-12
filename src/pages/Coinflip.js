@@ -19,7 +19,7 @@ import x from "../assets/images/casino/protocol/x.png";
 import head from "../assets/images/casino/coinflip/heads/head.png";
 import head_pick from "../assets/images/casino/coinflip/heads/pick.png";
 import tail from "../assets/images/casino/coinflip/tails/tail.png";
-import tail_pick from "../assets/images/casino/coinflip/tails/pick.png";
+import tail_pick from "../assets/images/casino/coinflip/tails/pick2.png";
 import dicie from "../assets/images/casino/game-options/dice.png";
 import rocket from "../assets/images/casino/game-options/rocket.png";
 import round from "../assets/images/casino/game-options/round.png";
@@ -149,7 +149,6 @@ function Coinflip() {
     setloadWithdrawal(false);
   }
 
-
   async function handleSubmition(e) {
     setLoadingBet(true);
     e.preventDefault();
@@ -223,15 +222,27 @@ function Coinflip() {
   }
 
   function setHeadFunction() {
-    setTail(false);
     setHead(true);
+    setTail(false);
     setChoice(1);
+    const imgElement = document.querySelector('.head__opt');
+    const imgElementT = document.querySelector('.tail__opt');
+    if (imgElement) {
+      imgElementT.classList.remove('img__liningT');
+      imgElement.classList.add('img__lining');
+    }
   }
 
   function setTailFunction() {
     setHead(false);
     setTail(true);
     setChoice(0);
+    const imgElement = document.querySelector('.head__opt');
+    const imgElementT = document.querySelector('.tail__opt');
+    if (imgElementT) {
+      imgElement.classList.remove('img__lining');
+      imgElementT.classList.add('img__liningT');
+    }
   }
 
   function setHundred() {
@@ -372,17 +383,26 @@ function Coinflip() {
               <div className="play__content">
                 <div className="coin__image">
                   {cointail ? (
-                   <img src={tail} className="tail" alt="." />
+                    <img src={tail} className="tail" alt="." />
                   ) : (
-                    
                     <img className="head" src={head} alt="." />
                   )}
 
                   <h4>PICK A SIDE</h4>
 
                   <div className="coin__options">
-                    <img src={head_pick} className="head__opt" alt="." onClick={setHeadFunction} />
-                    <img src={tail_pick} className="tail__opt" alt="." onClick={setTailFunction} />
+                    <img
+                      src={head_pick}
+                      className="head__opt"
+                      alt="."
+                      onClick={setHeadFunction}
+                    />
+                    <img
+                      src={tail_pick}
+                      className="tail__opt"
+                      alt="."
+                      onClick={setTailFunction}
+                    />
                   </div>
                 </div>
 
@@ -393,7 +413,7 @@ function Coinflip() {
                       <input
                         type="number"
                         value={value}
-                        placeholder="Input value"
+                        placeholder="0"
                         onChange={(e) => setValue(e.target.value)}
                         required
                       />
@@ -422,8 +442,6 @@ function Coinflip() {
                   </form>
                 </div>
               </div>
-
-          
 
               <div className="mt-5">
                 <h4>Player Earnings: {winnings} </h4>
