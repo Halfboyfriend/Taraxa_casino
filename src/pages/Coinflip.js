@@ -120,7 +120,6 @@ function Coinflip() {
       console.log(err);
       // toast.error("Error: User rejected");
     }
-    // toast.success("Wallet connected successfully");
   }
 
   async function withdrawWinnings() {

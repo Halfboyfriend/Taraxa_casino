@@ -7,7 +7,7 @@ header {
 }
 
 header .brand__img img {
-    width: 200px;
+    width: 50px;
     height: 41px
 }
 
@@ -252,8 +252,8 @@ main {
     }
 
     header .brand__img img {
-        width: 70px;
-        height: 15px
+        width: 50px;
+        height: 41px
     }
 
     header .niv h3 {

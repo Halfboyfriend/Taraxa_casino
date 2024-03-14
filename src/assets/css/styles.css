@@ -10,7 +10,7 @@ nav .brand img {
     height: 41px
 }
 
-.connect__btn {
+ .connect__btn {
     float: right;
     border: 0.1rem solid #15AC5B;
     padding: 8px 0 8px 8px;
@@ -20,12 +20,12 @@ nav .brand img {
 }
 
 
-.connect__btn img {
+ .connect__btn img {
     width: 25px;
     margin-right: 10px;
 }
 
-.connect__btn .button {
+ .connect__btn .button {
     background: linear-gradient(90deg, #15AC5B 23.08%, #0F7B41 85.71%);
     border: 1px solid #15AC5B;
     color: #fff;
@@ -172,13 +172,12 @@ nav .brand img {
     /* margin-right: 60px; */
 
 }
-
-.content h3 {
-    font-weight: 900;
-    font-size: 20px;
+.content h3{
+   font-weight: 900;
+   font-size: 20px;
 }
 
-.guide .content .meta-image {
+.guide .content .meta-image{
     width: 70px;
 }
 
@@ -194,7 +193,7 @@ nav .brand img {
 @media only screen and (max-width: 768px) {
     nav .brand img {
         width: 50px;
-        height: 41px
+    height: 41px
     }
 
     nav .connect__btn {
