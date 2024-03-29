@@ -169,5 +169,5 @@ export const TokenABi = [
     type: "function",
   },
 ];
-
-export const TokenAddress = "0x7f527bE2e705A2428615a041082B7409c392cf33";
+//0x7f527bE2e705A2428615a041082B7409c392cf33
+export const TokenAddress = "0x5C31Bf841c9250F41F5aF070D1B88d0d37676006";
