@@ -48,12 +48,18 @@ function Coinflip() {
     }
   }, []);
 
-  const erc20TokenAddress = "0x9bFF260c55e1E185e775f54FEAbeE884E9dAd9d8";
+
+  //CFFP: 0x9bFF260c55e1E185e775f54FEAbeE884E9dAd9d8
+
+
+  const erc20TokenAddress = "0x5C31Bf841c9250F41F5aF070D1B88d0d37676006";
+  // THE TOKEN ADDRESS YOU WANT TO USE TO PLAY THE GAME
 
   const requestApproval = async (amount) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const Spender = "0x3fEa0eD1FA9448D315053ee8CFcE32a09C708047";
+    // COINFLIP CONTRACT ADDRESS
 
     const erc20Token = new ethers.Contract(
       erc20TokenAddress,
@@ -71,7 +77,9 @@ function Coinflip() {
       return true;
     } catch (error) {
       console.error("Error requesting spending approval:", error);
-      toast.error("Error requesting spending approval");
+      // console.log(error.data.message)
+
+      toast.error(error.data.message);
     }
   };
 
